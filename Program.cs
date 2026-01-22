@@ -149,7 +149,7 @@ internal class Program
         var appName = options.Webapp;
         var appId = options.AppId;
         var strPayload = File.ReadAllText(options.ViewState);
-        var page = options.Page;
+        var page = options.Page.TrimStart(new char[] { '/' });
         var viewStateUserKey = options.UserKey;
 
         if (options.UrlEncoded)
@@ -221,7 +221,7 @@ internal class Program
 
         var appName = options.Webapp;
         var strPayload = File.ReadAllText(options.ViewState);
-        var page = options.Page;
+        var page = options.Page.TrimStart(new char[] { '/' });
         var viewStateUserKey = options.UserKey;
 
         if (options.UrlEncoded)
