@@ -1,6 +1,7 @@
 # VSRipper
 
 VSRipper is a tool I wrote to make decrypting view states trivial.
+Released along side [Decrypting View State Messages](https://zeroed.tech/blog/decrypting-viewstate-messages/)
 
 ## Usage
 
