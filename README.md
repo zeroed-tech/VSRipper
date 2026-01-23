@@ -18,7 +18,7 @@ VSRipper.exe bruteforce --autogenkeys "KEY1,KEY2" --webapp "/owa" --appid "/LM/W
 
 | Argument | Requirement | Default | Description |
 | --- | --- | --- | --- |
-| `--autogenkeys` | **Required** | - | Comma separated list of autogen keys to test. |
+| `--autogenkeys` | **Required** | - | The path to a file containing a comma separated list of autogen keys. |
 | `--webapp` | **Required** | - | The path to the targeted web application. |
 | `--appid` | **Required** | - | The ID of the targeted application. |
 | `--page` | **Required** | - | The specific page the view state was generated for. |

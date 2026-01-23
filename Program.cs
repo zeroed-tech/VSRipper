@@ -20,8 +20,8 @@ internal class Program
         [Option(Default = true, HelpText = "Should modern machine keys be generated?")]
         public bool GenerateModern { get; set; }
 
-        [Option(Required = true, HelpText = "A comma separated list of autogen keys")]
-        public IEnumerable<string> AutogenKeys { get; set; }
+        [Option(Required = true, HelpText = "The path to a file containing a comma separated list of autogen keys")]
+        public string AutogenKeys { get; set; }
 
         [Option(Required = true, HelpText = "The path to the web application targeted")]
         public string Webapp { get; set; }
@@ -144,8 +144,13 @@ internal class Program
             Console.WriteLine("--viewState file does not exist: " + options.ViewState);
             return -1;
         }
+        if(!File.Exists(options.AutogenKeys))
+        {
+            Console.WriteLine("--autogenKeys file does not exist: " + options.AutogenKeys);
+            return -1;
+        }
         VerboseLogging = options.Verbose;
-        var autogenKeysList = options.AutogenKeys.Select(k => HexStringToBytes(k)).ToList();
+        var autogenKeysList = File.ReadAllText(options.AutogenKeys).Split(new char[] {',', '\n'}). Select(k => HexStringToBytes(k)).ToList();
         var appName = options.Webapp;
         var appId = options.AppId;
         var strPayload = File.ReadAllText(options.ViewState);
